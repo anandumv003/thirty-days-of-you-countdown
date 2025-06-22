@@ -1,5 +1,5 @@
 
-import { X, Heart } from 'lucide-react';
+import { X, Heart, Sparkles, Star } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 
 interface DayData {
@@ -20,60 +20,84 @@ const DayModal = ({ dayData, isOpen, onClose }: DayModalProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Romantic backdrop */}
+      {/* Enhanced romantic backdrop with animation */}
       <div 
-        className="absolute inset-0 bg-rose-900/20 backdrop-blur-sm"
+        className="absolute inset-0 bg-rose-900/20 backdrop-blur-sm animate-fade-in"
         onClick={onClose}
       />
       
-      {/* Modal with romantic styling */}
-      <div className="relative max-w-2xl w-full max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl animate-scale-in border border-rose-100">
-        {/* Header */}
+      {/* Modal with enhanced romantic styling and animations */}
+      <div className="relative max-w-2xl w-full max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl animate-scale-in border border-rose-100 hover-lift">
+        {/* Floating magical elements inside modal */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-20">
+          <Heart className="absolute top-4 right-8 w-4 h-4 text-rose-300 animate-float" />
+          <Sparkles className="absolute top-8 left-6 w-3 h-3 text-pink-300 animate-twinkle" />
+          <Star className="absolute bottom-8 right-6 w-3 h-3 text-rose-400 animate-dreamy-sway" />
+          <Heart className="absolute bottom-12 left-8 w-2 h-2 text-pink-400 animate-heart-beat" />
+        </div>
+
+        {/* Header with enhanced animations */}
         <div className="relative">
           <img
             src={dayData.imageUrl}
             alt={dayData.title}
-            className="w-full h-64 md:h-80 object-cover"
+            className="w-full h-64 md:h-80 object-cover transition-transform duration-500 hover:scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-rose-900/60 to-transparent" />
           
-          {/* Close button with romantic styling */}
+          {/* Enhanced close button with romantic styling */}
           <Button
             onClick={onClose}
             variant="ghost"
             size="icon"
-            className="absolute top-4 right-4 bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white rounded-full"
+            className="absolute top-4 right-4 bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white rounded-full transition-all duration-300 hover:scale-110 animate-romantic-glow"
           >
             <X className="w-5 h-5" />
           </Button>
 
-          {/* Day number badge with romantic colors */}
-          <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center border border-rose-200">
-            <span className="text-lg font-medium text-rose-700">{dayData.day}</span>
+          {/* Enhanced day number badge with animations */}
+          <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center border border-rose-200 animate-love-pulse hover:scale-110 transition-transform duration-300">
+            <span className="text-lg font-medium text-rose-700 animate-gentle-bounce">{dayData.day}</span>
           </div>
 
-          {/* Title overlay */}
-          <div className="absolute bottom-4 left-4 right-4">
-            <h2 className="text-2xl md:text-3xl font-light text-white mb-2">
+          {/* Title overlay with enhanced animation */}
+          <div className="absolute bottom-4 left-4 right-4 animate-fade-in animate-delay-300">
+            <h2 className="text-2xl md:text-3xl font-light text-white mb-2 animate-dreamy-sway">
               {dayData.title}
             </h2>
           </div>
         </div>
 
-        {/* Content with romantic styling */}
-        <div className="p-6 md:p-8 bg-gradient-to-b from-white to-rose-50/30">
-          <div className="prose prose-lg max-w-none">
+        {/* Content with enhanced romantic styling and animations */}
+        <div className="p-6 md:p-8 bg-gradient-to-b from-white to-rose-50/30 relative">
+          {/* More floating elements in content area */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+            <Heart className="absolute top-4 right-12 w-6 h-6 text-rose-300 animate-float-delayed" />
+            <Sparkles className="absolute bottom-8 left-8 w-4 h-4 text-pink-300 animate-twinkle animate-delay-500" />
+            <Star className="absolute top-1/2 right-4 w-3 h-3 text-rose-400 animate-magic-spin" />
+          </div>
+
+          <div className="prose prose-lg max-w-none animate-fade-in animate-delay-500">
             <p className="text-gray-700 leading-relaxed font-light text-base md:text-lg">
               {dayData.message}
             </p>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <div className="flex items-center gap-2 text-rose-600">
-              <Heart className="w-5 h-5 fill-current animate-pulse" />
-              <span className="text-sm font-light">With all my love</span>
-              <Heart className="w-5 h-5 fill-current animate-pulse" />
+          {/* Enhanced romantic footer with more animations */}
+          <div className="mt-8 flex justify-center animate-fade-in animate-delay-700">
+            <div className="flex items-center gap-2 text-rose-600 bg-rose-50/50 rounded-full px-6 py-3 backdrop-blur-sm border border-rose-100 animate-romantic-glow">
+              <Heart className="w-5 h-5 fill-current animate-heart-beat" />
+              <span className="text-sm font-light animate-gentle-bounce animate-delay-200">With all my love</span>
+              <Heart className="w-5 h-5 fill-current animate-heart-beat animate-delay-300" />
             </div>
+          </div>
+
+          {/* Additional magical sparkles */}
+          <div className="absolute bottom-4 left-4">
+            <Sparkles className="w-4 h-4 text-rose-300 opacity-40 animate-twinkle" />
+          </div>
+          <div className="absolute bottom-6 right-8">
+            <Heart className="w-3 h-3 text-pink-300 opacity-50 animate-float" />
           </div>
         </div>
       </div>

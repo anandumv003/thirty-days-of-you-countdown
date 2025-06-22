@@ -107,26 +107,189 @@
   }
 }
 
-/* Custom animations and effects */
+/* Enhanced romantic animations and effects */
 @layer utilities {
   .animate-sparkle {
     animation: sparkle 2s ease-in-out infinite;
   }
 
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 8s ease-in-out infinite 2s;
+  }
+
+  .animate-heart-beat {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .animate-gentle-bounce {
+    animation: gentleBounce 4s ease-in-out infinite;
+  }
+
+  .animate-romantic-glow {
+    animation: romanticGlow 3s ease-in-out infinite alternate;
+  }
+
+  .animate-love-pulse {
+    animation: lovePulse 2.5s ease-in-out infinite;
+  }
+
+  .animate-dreamy-sway {
+    animation: dreamySway 5s ease-in-out infinite;
+  }
+
+  .animate-magic-spin {
+    animation: magicSpin 8s linear infinite;
+  }
+
   @keyframes sparkle {
     0%, 100% { 
       opacity: 0.3; 
-      transform: scale(1);
+      transform: scale(1) rotate(0deg);
     }
     50% { 
       opacity: 1; 
+      transform: scale(1.2) rotate(180deg);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    33% {
+      transform: translateY(-20px) translateX(10px);
+    }
+    66% {
+      transform: translateY(-10px) translateX(-10px);
+    }
+  }
+
+  @keyframes heartbeat {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.7;
+    }
+    50% {
       transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
+    25% {
+      opacity: 0.8;
+      transform: scale(1.1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(0.9);
+    }
+    75% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes gentleBounce {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes romanticGlow {
+    0% {
+      box-shadow: 0 0 20px rgba(251, 113, 133, 0.3);
+    }
+    100% {
+      box-shadow: 0 0 40px rgba(251, 113, 133, 0.6), 0 0 60px rgba(251, 113, 133, 0.3);
+    }
+  }
+
+  @keyframes lovePulse {
+    0%, 100% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+  }
+
+  @keyframes dreamySway {
+    0%, 100% {
+      transform: rotate(-2deg) translateX(0px);
+    }
+    50% {
+      transform: rotate(2deg) translateX(5px);
+    }
+  }
+
+  @keyframes magicSpin {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    25% {
+      transform: rotate(90deg) scale(1.1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1);
+    }
+    75% {
+      transform: rotate(270deg) scale(1.1);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
     }
   }
 
   .backdrop-blur-xs {
     backdrop-filter: blur(2px);
   }
+
+  /* Enhanced hover animations */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-romantic {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .hover-romantic:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(251, 113, 133, 0.2);
+  }
+
+  /* Staggered animation delays */
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+  .animate-delay-700 { animation-delay: 0.7s; }
+  .animate-delay-1000 { animation-delay: 1s; }
+  .animate-delay-1500 { animation-delay: 1.5s; }
+  .animate-delay-2000 { animation-delay: 2s; }
 }
 
 /* Smooth scrollbar styling */
