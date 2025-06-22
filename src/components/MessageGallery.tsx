@@ -21,22 +21,22 @@ const MessageGallery = ({ messages, isOpen, onClose }: MessageGalleryProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
+      {/* Backdrop with her favorite colors */}
       <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-navy-900/40 backdrop-blur-sm"
         onClick={onClose}
       />
       
-      {/* Modal */}
+      {/* Modal with her color scheme */}
       <div className="relative max-w-4xl w-full max-h-[90vh] rounded-3xl bg-white shadow-2xl animate-scale-in overflow-hidden">
-        {/* Header */}
-        <div className="bg-gradient-to-r from-pink-50 to-purple-50 px-6 py-4 border-b border-pink-100">
+        {/* Header with her favorite colors */}
+        <div className="bg-gradient-to-r from-blue-50 to-pink-50 px-6 py-4 border-b border-blue-100">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Calendar className="w-6 h-6 text-pink-600" />
+              <Calendar className="w-6 h-6 text-navy-600" />
               <div>
-                <h2 className="text-2xl font-light text-gray-800">Message Gallery</h2>
-                <p className="text-sm text-gray-600 font-light">
+                <h2 className="text-2xl font-light text-navy-800">Message Gallery</h2>
+                <p className="text-sm text-navy-600 font-light">
                   {messages.length} unlocked messages
                 </p>
               </div>
@@ -46,7 +46,7 @@ const MessageGallery = ({ messages, isOpen, onClose }: MessageGalleryProps) => {
               onClick={onClose}
               variant="ghost"
               size="icon"
-              className="hover:bg-white/50 text-gray-600 rounded-full"
+              className="hover:bg-white/50 text-navy-600 rounded-full"
             >
               <X className="w-5 h-5" />
             </Button>
@@ -60,7 +60,7 @@ const MessageGallery = ({ messages, isOpen, onClose }: MessageGalleryProps) => {
               {messages.map((dayData) => (
                 <div
                   key={dayData.day}
-                  className="bg-gradient-to-r from-white to-pink-50/30 rounded-2xl overflow-hidden border border-pink-100 hover:shadow-md transition-shadow duration-300"
+                  className="bg-gradient-to-r from-white to-blue-50/30 rounded-2xl overflow-hidden border border-blue-100 hover:shadow-md transition-shadow duration-300"
                 >
                   <div className="md:flex">
                     {/* Image */}
@@ -75,16 +75,16 @@ const MessageGallery = ({ messages, isOpen, onClose }: MessageGalleryProps) => {
                     {/* Content */}
                     <div className="md:w-2/3 p-6">
                       <div className="flex items-start gap-3 mb-3">
-                        <div className="bg-pink-100 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
-                          <span className="text-sm font-medium text-pink-700">
+                        <div className="bg-blue-100 rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                          <span className="text-sm font-medium text-navy-700">
                             {dayData.day}
                           </span>
                         </div>
                         <div>
-                          <h3 className="text-lg font-medium text-gray-800 mb-2">
+                          <h3 className="text-lg font-medium text-navy-800 mb-2">
                             {dayData.title}
                           </h3>
-                          <p className="text-gray-700 text-sm leading-relaxed font-light">
+                          <p className="text-navy-700 text-sm leading-relaxed font-light">
                             {dayData.message}
                           </p>
                         </div>
@@ -97,8 +97,8 @@ const MessageGallery = ({ messages, isOpen, onClose }: MessageGalleryProps) => {
             
             {messages.length === 0 && (
               <div className="text-center py-12">
-                <Heart className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-500 font-light">
+                <Heart className="w-12 h-12 text-navy-300 mx-auto mb-4" />
+                <p className="text-navy-500 font-light">
                   No messages unlocked yet. Come back tomorrow!
                 </p>
               </div>

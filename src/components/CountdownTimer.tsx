@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Clock, Heart, Sparkles } from 'lucide-react';
 
@@ -38,18 +39,18 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
   }, [targetDate]);
 
   return (
-    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-pink-100 shadow-sm max-w-md mx-auto relative hover-romantic animate-love-pulse">
-      {/* Floating romantic elements */}
+    <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-blue-100 shadow-sm max-w-md mx-auto relative hover-romantic animate-love-pulse">
+      {/* Floating romantic elements in her favorite colors */}
       <div className="absolute -top-2 -right-2">
-        <Heart className="w-4 h-4 text-rose-300 opacity-60 animate-float" />
+        <Heart className="w-4 h-4 text-pink-400 opacity-60 animate-float" />
       </div>
       <div className="absolute -bottom-2 -left-2">
-        <Sparkles className="w-3 h-3 text-pink-300 opacity-50 animate-twinkle" />
+        <Sparkles className="w-3 h-3 text-blue-400 opacity-50 animate-twinkle" />
       </div>
       
       <div className="flex items-center justify-center gap-2 mb-4 animate-fade-in">
-        <Clock className="w-5 h-5 text-pink-600 animate-gentle-bounce" />
-        <span className="text-sm font-light text-gray-600">Time until the big day</span>
+        <Clock className="w-5 h-5 text-navy-600 animate-gentle-bounce" />
+        <span className="text-sm font-light text-navy-600">Time until the big day</span>
       </div>
       
       <div className="grid grid-cols-4 gap-4">
@@ -60,22 +61,22 @@ const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {
           { label: 'Secs', value: timeLeft.seconds },
         ].map((item, index) => (
           <div key={item.label} className={`text-center animate-fade-in animate-delay-${(index + 1) * 100}`}>
-            <div className="text-2xl md:text-3xl font-light text-pink-700 mb-1 animate-love-pulse">
+            <div className="text-2xl md:text-3xl font-light text-navy-700 mb-1 animate-love-pulse">
               {item.value.toString().padStart(2, '0')}
             </div>
-            <div className="text-xs text-gray-500 font-light animate-gentle-bounce animate-delay-200">
+            <div className="text-xs text-navy-500 font-light animate-gentle-bounce animate-delay-200">
               {item.label}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Additional romantic touches */}
+      {/* Additional romantic touches in her colors */}
       <div className="absolute top-1/2 left-2 transform -translate-y-1/2">
-        <Heart className="w-2 h-2 text-rose-200 opacity-40 animate-heart-beat" />
+        <Heart className="w-2 h-2 text-pink-200 opacity-40 animate-heart-beat" />
       </div>
       <div className="absolute top-1/2 right-2 transform -translate-y-1/2">
-        <Heart className="w-2 h-2 text-pink-200 opacity-40 animate-heart-beat animate-delay-500" />
+        <Heart className="w-2 h-2 text-blue-200 opacity-40 animate-heart-beat animate-delay-500" />
       </div>
     </div>
   );
