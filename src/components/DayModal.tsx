@@ -20,14 +20,14 @@ const DayModal = ({ dayData, isOpen, onClose }: DayModalProps) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
+      {/* Romantic backdrop */}
       <div 
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+        className="absolute inset-0 bg-rose-900/20 backdrop-blur-sm"
         onClick={onClose}
       />
       
-      {/* Modal */}
-      <div className="relative max-w-2xl w-full max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl animate-scale-in">
+      {/* Modal with romantic styling */}
+      <div className="relative max-w-2xl w-full max-h-[90vh] overflow-hidden rounded-3xl bg-white shadow-2xl animate-scale-in border border-rose-100">
         {/* Header */}
         <div className="relative">
           <img
@@ -35,21 +35,21 @@ const DayModal = ({ dayData, isOpen, onClose }: DayModalProps) => {
             alt={dayData.title}
             className="w-full h-64 md:h-80 object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-rose-900/60 to-transparent" />
           
-          {/* Close button */}
+          {/* Close button with romantic styling */}
           <Button
             onClick={onClose}
             variant="ghost"
             size="icon"
-            className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white rounded-full"
+            className="absolute top-4 right-4 bg-white/30 backdrop-blur-sm hover:bg-white/40 text-white rounded-full"
           >
             <X className="w-5 h-5" />
           </Button>
 
-          {/* Day number badge */}
-          <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center">
-            <span className="text-lg font-medium text-pink-700">{dayData.day}</span>
+          {/* Day number badge with romantic colors */}
+          <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-full w-12 h-12 flex items-center justify-center border border-rose-200">
+            <span className="text-lg font-medium text-rose-700">{dayData.day}</span>
           </div>
 
           {/* Title overlay */}
@@ -60,8 +60,8 @@ const DayModal = ({ dayData, isOpen, onClose }: DayModalProps) => {
           </div>
         </div>
 
-        {/* Content */}
-        <div className="p-6 md:p-8">
+        {/* Content with romantic styling */}
+        <div className="p-6 md:p-8 bg-gradient-to-b from-white to-rose-50/30">
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 leading-relaxed font-light text-base md:text-lg">
               {dayData.message}
@@ -69,9 +69,10 @@ const DayModal = ({ dayData, isOpen, onClose }: DayModalProps) => {
           </div>
 
           <div className="mt-8 flex justify-center">
-            <div className="flex items-center gap-2 text-pink-600">
-              <Heart className="w-5 h-5 fill-current" />
-              <span className="text-sm font-light">Made with love</span>
+            <div className="flex items-center gap-2 text-rose-600">
+              <Heart className="w-5 h-5 fill-current animate-pulse" />
+              <span className="text-sm font-light">With all my love</span>
+              <Heart className="w-5 h-5 fill-current animate-pulse" />
             </div>
           </div>
         </div>
