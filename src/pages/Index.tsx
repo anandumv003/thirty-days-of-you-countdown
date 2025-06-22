@@ -13,7 +13,7 @@ const messages = [
     day: 1,
     title: "The Countdown Begins",
     message: "On this day, 30 days before you turn 30, let's rewind to where it all started. A little sparkle entered the world, and it hasn't stopped shining since. You've grown, glowed, and gifted the world with so much warmth. Let the countdown to your most meaningful birthday begin. Here's to you, 30 times over.",
-    imageUrl: "/photos/day1.jpg" // You can replace these with your uploaded photos
+    imageUrl: "/photos/day1.jpg"
   },
   {
     day: 2,
@@ -222,51 +222,66 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-purple-50 to-pink-50">
-      {/* Floating sparkles animation */}
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-orange-50 to-pink-100 relative overflow-hidden">
+      {/* Enhanced floating sparkles animation */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <Sparkles
             key={i}
-            className="absolute text-pink-300 opacity-30 animate-pulse"
+            className="absolute text-pink-400 opacity-20 animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`
+              animationDelay: `${Math.random() * 4}s`,
+              animationDuration: `${2 + Math.random() * 3}s`,
+              filter: 'blur(0.5px)'
             }}
-            size={12 + Math.random() * 8}
+            size={8 + Math.random() * 12}
           />
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-6xl">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-light text-gray-800 mb-4 tracking-wide">
-            30 Days of You 
-            <span className="inline-block ml-2 animate-bounce">🎉</span>
-          </h1>
-          <p className="text-lg text-gray-600 font-light mb-8">
+      {/* Subtle geometric background pattern */}
+      <div className="fixed inset-0 opacity-5 pointer-events-none">
+        <div className="absolute top-20 left-20 w-32 h-32 border border-pink-300 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-32 w-24 h-24 border border-orange-300 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-32 left-1/3 w-20 h-20 border border-rose-300 rounded-full animate-pulse delay-2000"></div>
+        <div className="absolute bottom-20 right-20 w-28 h-28 border border-pink-300 rounded-full animate-pulse delay-3000"></div>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 py-12 max-w-7xl">
+        {/* Enhanced header with better typography */}
+        <div className="text-center mb-16">
+          <div className="relative inline-block">
+            <h1 className="text-5xl md:text-7xl font-extralight text-gray-800 mb-6 tracking-wider leading-tight">
+              30 Days of You 
+              <span className="inline-block ml-3 animate-bounce text-6xl">🎉</span>
+            </h1>
+            {/* Subtle underline decoration */}
+            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent"></div>
+          </div>
+          <p className="text-xl text-gray-600 font-light mb-10 mt-8 max-w-2xl mx-auto leading-relaxed">
             Because one day isn't enough to celebrate a friend like you.
           </p>
-          <CountdownTimer targetDate={birthdayDate} />
+          <div className="transform hover:scale-105 transition-transform duration-300">
+            <CountdownTimer targetDate={birthdayDate} />
+          </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-center gap-4 mb-8">
+        {/* Enhanced action buttons */}
+        <div className="flex justify-center gap-6 mb-12">
           <Button
             onClick={() => setShowGallery(true)}
             variant="outline"
-            className="bg-white/70 backdrop-blur-sm border-pink-200 text-pink-700 hover:bg-pink-50 font-light"
+            className="bg-white/80 backdrop-blur-md border-pink-200 text-pink-700 hover:bg-pink-50 hover:border-pink-300 font-light px-8 py-3 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
           >
-            <Heart className="w-4 h-4 mr-2" />
+            <Heart className="w-5 h-5 mr-3 text-pink-500" />
             View All Messages
           </Button>
         </div>
 
-        {/* Calendar Grid */}
-        <div className="grid grid-cols-5 md:grid-cols-6 gap-3 md:gap-4 mb-12">
+        {/* Enhanced calendar grid with better spacing and animations */}
+        <div className="grid grid-cols-5 md:grid-cols-6 gap-4 md:gap-6 mb-16 px-4">
           {messages.map((dayData) => {
             const unlocked = isUnlocked(dayData.day);
             return (
@@ -274,49 +289,58 @@ const Index = () => {
                 key={dayData.day}
                 onClick={() => handleDayClick(dayData.day)}
                 className={`
-                  aspect-square relative group cursor-pointer transition-all duration-300
+                  aspect-square relative group cursor-pointer transition-all duration-500 transform
                   ${unlocked 
-                    ? 'hover:scale-105 hover:shadow-lg' 
-                    : 'opacity-60 cursor-not-allowed'
+                    ? 'hover:scale-110 hover:shadow-2xl hover:-translate-y-2' 
+                    : 'opacity-50 cursor-not-allowed'
                   }
                 `}
               >
                 <div
                   className={`
-                    w-full h-full rounded-2xl p-4 flex flex-col items-center justify-center
-                    transition-all duration-500 relative overflow-hidden
+                    w-full h-full rounded-3xl p-5 flex flex-col items-center justify-center
+                    transition-all duration-700 relative overflow-hidden backdrop-blur-sm
                     ${unlocked
-                      ? 'bg-gradient-to-br from-white to-pink-50 border-2 border-pink-100 shadow-md hover:shadow-xl'
-                      : 'bg-gray-100 border-2 border-gray-200 backdrop-blur-sm'
+                      ? 'bg-gradient-to-br from-white/90 via-pink-50/80 to-rose-50/90 border-2 border-pink-200/60 shadow-xl hover:shadow-2xl hover:border-pink-300'
+                      : 'bg-gray-100/70 border-2 border-gray-300/40'
                     }
                   `}
                 >
-                  {/* Background sparkle effect */}
+                  {/* Enhanced background effects */}
                   {unlocked && (
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-2 right-2 w-1 h-1 bg-pink-400 rounded-full animate-ping"></div>
-                      <div className="absolute bottom-3 left-3 w-1 h-1 bg-purple-400 rounded-full animate-ping delay-300"></div>
-                      <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-yellow-400 rounded-full animate-ping delay-700"></div>
-                    </div>
+                    <>
+                      {/* Glowing background gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-100/30 via-transparent to-orange-100/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                      
+                      {/* Animated sparkle dots */}
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                        <div className="absolute top-3 right-3 w-1.5 h-1.5 bg-pink-400 rounded-full animate-ping"></div>
+                        <div className="absolute bottom-4 left-4 w-1 h-1 bg-orange-400 rounded-full animate-ping delay-300"></div>
+                        <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-rose-400 rounded-full animate-ping delay-700"></div>
+                        <div className="absolute top-4 left-3 w-0.5 h-0.5 bg-pink-300 rounded-full animate-pulse delay-1000"></div>
+                      </div>
+                    </>
                   )}
 
-                  {/* Day number */}
-                  <div className={`text-2xl md:text-3xl font-light mb-2 z-10 ${
-                    unlocked ? 'text-pink-700' : 'text-gray-400'
+                  {/* Enhanced day number with better typography */}
+                  <div className={`text-3xl md:text-4xl font-extralight mb-3 z-10 transition-colors duration-300 ${
+                    unlocked ? 'text-pink-700 group-hover:text-pink-800' : 'text-gray-400'
                   }`}>
                     {dayData.day}
                   </div>
 
-                  {/* Lock or Gift icon */}
-                  {unlocked ? (
-                    <Gift className="w-5 h-5 text-pink-500 opacity-70 group-hover:scale-110 transition-transform" />
-                  ) : (
-                    <Lock className="w-5 h-5 text-gray-400" />
-                  )}
+                  {/* Enhanced icons with animations */}
+                  <div className="z-10 mb-2">
+                    {unlocked ? (
+                      <Gift className="w-6 h-6 text-pink-500 opacity-70 group-hover:scale-125 group-hover:text-pink-600 transition-all duration-300 group-hover:rotate-12" />
+                    ) : (
+                      <Lock className="w-6 h-6 text-gray-400" />
+                    )}
+                  </div>
 
-                  {/* Day label */}
-                  <div className={`text-xs text-center mt-1 font-light ${
-                    unlocked ? 'text-gray-600' : 'text-gray-400'
+                  {/* Enhanced day label */}
+                  <div className={`text-xs text-center font-light transition-colors duration-300 ${
+                    unlocked ? 'text-gray-600 group-hover:text-gray-700' : 'text-gray-400'
                   }`}>
                     Day {dayData.day}
                   </div>
@@ -326,12 +350,22 @@ const Index = () => {
           })}
         </div>
 
-        {/* Progress indicator */}
+        {/* Enhanced progress indicator */}
         <div className="text-center">
-          <div className="bg-white/70 backdrop-blur-sm rounded-full px-6 py-3 inline-block border border-pink-100">
-            <p className="text-sm text-gray-600 font-light">
-              <span className="font-medium text-pink-700">{currentDay}</span> of 30 days unlocked
+          <div className="bg-white/80 backdrop-blur-md rounded-full px-8 py-4 inline-block border border-pink-200/60 shadow-lg">
+            <p className="text-base text-gray-700 font-light">
+              <span className="font-medium text-pink-700 text-lg">{currentDay}</span> 
+              <span className="text-gray-500 mx-2">of</span>
+              <span className="font-medium text-gray-600">30 days</span>
+              <span className="text-gray-500 ml-2">unlocked</span>
             </p>
+            {/* Progress bar */}
+            <div className="mt-3 w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div 
+                className="h-full bg-gradient-to-r from-pink-400 to-rose-400 rounded-full transition-all duration-1000 ease-out"
+                style={{ width: `${(currentDay / 30) * 100}%` }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
